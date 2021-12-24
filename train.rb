@@ -13,6 +13,8 @@
 -Может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад,
 но только на 1 станцию за раз. (arrive_train)
 -Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
+-написать метод, который принимает блок и проходит по всем вагонам поезда
+(вагоны должны быть во внутреннем массиве), передавая каждый объект вагона в блок.
 =end
 require_relative 'manufacturer_name'
 require_relative 'instance_counter'
@@ -28,6 +30,11 @@ class Train
     @@trains.find {|train| train.number == train_number}
   end
 
+  def wagon_each(block)
+    @wagons.each do |wagon|
+    block.call(wagon)
+    end
+  end
 
   def initialize(number)
     @train_name = number.to_s
