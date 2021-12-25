@@ -8,25 +8,10 @@
 require_relative 'wagon'
 
 class WagonCargo < Wagon
-	attr_accessor :number
-	attr_reader :type, :volume
+	attr_reader :type
 
-	def initialize(volume)
-		@volume = volume
-		@volume_busy  = 0
+	def initialize(number,volume)
 		@type = 'cargo'
-	end
-
-	def load_wagon(volume_cargo)
-		@volume_busy += volume_cargo if volume_cargo <= self.volume_free
-
-	end
-
-	def volume_busy
-		@volume_busy
-	end
-
-	def volume_free
-	 @volume - @volume_busy
+		super
 	end
 end

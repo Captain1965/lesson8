@@ -8,24 +8,15 @@
 
 require_relative 'wagon'
 class WagonPassenger < Wagon
-	attr_accessor :number
-	attr_reader :type, :seats
-	def initialize(seats)
+	attr_reader :type
+	def initialize(number,volume)
 		@type = 'passenger'
-		@seat = 0
-		@seats = seats
+		super
 	end
 
-	def seat
-		@seat +=1 if @seat < @seats
-	end
-
-	def seat_busy
-		@seat
-	end
-
-	def seat_free
-		seat_free = @seats - @seat
+	def load_wagon(quantity = 1)
+		quantity = 1
+		super
 	end
 end
 
